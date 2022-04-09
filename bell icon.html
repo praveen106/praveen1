@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> 
+{
+    background-color: #60a6bb;
+    height: 100vh;
+    display: grid;
+    place-content: center;
+    font-family: sans-serif;
+}
+.icon-wrapper{
+    width: 50px; /*Overall width - size of the icon*/
+    height: 50px; /*Overall height - size of the icon*/
+    position: relative; /*Position of relative because we will have an element inside with position of absolute. This prevents the element with position of absolute from floating away from this box.*/
+}
+.icon-wrapper::after{
+    content: attr(data-number); /*Passing in the data attribute we added within the html. The number will show here.*/
+    width: 20px; /*Overall width - size of the bubble*/
+    height: 20px; /*Overall height - size of the bubble*/
+    background-color: #d32b2b;
+    color: #fff;
+    display: grid; /*Turns this element into a grid container. It will allow us to use the place content property to center the notification number.*/
+    place-content: center; /*Places the notification number in the middle of the bubble both vertically and horizontally.*/
+    border-radius: 50%; /*Makes the bubble round.*/
+    position: absolute; /*Allows us to move the element freely inside the icon wrapper box.*/
+    top: 5px; /*Positioning the bubble 5px from the top starting point.*/
+    right: 0; /*Positioning the bubble 5px from the right starting point.*/
+    opacity: 0; /*Hides the bubble from view.*/
+    transform: translateY(3px); /*Moves the bubble down slightly - used for the moving up animation later.*/
+}
+
+.icon-wrapper:hover::after{
+    opacity: 1; /*Shows the element again - We hide it by default.*/
+    transform: translateY(0); /*Moves the element up slightly - We move it down by default.*/
+    transition: opacity .25s, transform .25s; /*Adds a transition on the properties we want to animate over .25 seconds.*/
+}
+.bell-icon{
+    max-width: 100%; /*Makes the icon image only make up 100% of the icon wrapper width and no more than that.*/
+}
+.icon-wrapper:hover .bell-icon{
+    animation: shake 1s forwards; 
+}
+@keyframes shake {
+    10%{
+        transform: rotate(15deg);
+    }
+    20%{
+        transform: rotate(-15deg);
+    }
+    30%{
+        transform: rotate(15deg);
+    }
+    50%{
+        transform: rotate(0deg);
+    }
+}
+</style>
+</head>
+<body>
+    
+</body>
+</html>
