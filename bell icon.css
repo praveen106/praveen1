@@ -14,9 +14,9 @@
     font-family: sans-serif;
 }
 .icon-wrapper{
-    width: 50px; /*Overall width - size of the icon*/
+    width: 50px;
+    position: relative; 
     height: 50px; /*Overall height - size of the icon*/
-    position: relative; /*Position of relative because we will have an element inside with position of absolute. This prevents the element with position of absolute from floating away from this box.*/
 }
 .icon-wrapper::after{
     content: attr(data-number); /*Passing in the data attribute we added within the html. The number will show here.*/
